@@ -1,11 +1,11 @@
 {
-  "name": "nucleus-starter-pack",
-  "version": "1.4.0",
+  "name": "react-starter-pack",
+  "version": "1.3.0",
   "description": "",
   "keywords": [
     "react",
     "starter",
-    "nucleus"
+    "rsp"
   ],
   "homepage": "https://github.com/naim0018/starter-template-react-typescript#readme",
   "bugs": {
@@ -20,7 +20,8 @@
   "type": "module",
   "main": "bin/create.js",
   "bin": {
-    "nucleus-starter-pack": "bin/create.js"
+    "nucleus-starter-pack": "bin/create.js",
+    "rsp": "bin/create.js"
   },
   "files": [
     "bin"
