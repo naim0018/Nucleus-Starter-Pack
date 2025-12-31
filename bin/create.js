@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 import { execSync } from "child_process";
-import { existsSync, rmSync, readdirSync } from "fs";
+import { existsSync, rmSync, readdirSync, cpSync } from "fs";
 import { resolve } from "path";
 
 const projectName = process.argv[2];
-const isCurrentDir = !projectName;
+const isCurrentDir = !projectName || projectName === ".";
 
 const projectPath = isCurrentDir
   ? process.cwd()
@@ -45,6 +45,15 @@ runCommand(
 
 // Remove git history safely
 rmSync(resolve(projectPath, ".git"), { recursive: true, force: true });
+
+// Extract template
+console.log("Setting up project structure...");
+const templateDir = resolve(projectPath, "template");
+cpSync(templateDir, projectPath, { recursive: true, force: true });
+
+// Clean up
+rmSync(templateDir, { recursive: true, force: true });
+rmSync(resolve(projectPath, "bin"), { recursive: true, force: true });
 
 // Install deps
 console.log("Installing dependencies...");
